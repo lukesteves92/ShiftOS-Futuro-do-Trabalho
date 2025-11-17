@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "ShiftOS",
+    "slug": "shiftos",
+    "scheme": "shiftos",
+    "version": "1.0.0",
+    "sdkVersion": "52.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "extra": {
+      "apiUrl": "http://10.0.2.2:3002"
+    }
+  }
+}
