@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Opportunity {
+  id          Int           @id @default(autoincrement())
+  title       String
+  description String?
+  pay         String?
+  image       String?
+  createdAt   DateTime      @default(now())
+  applications Application[]
+}
+
+model Application {
+  id             Int       @id @default(autoincrement())
+  name           String
+  email          String
+  phone          String
+  note           String?
+  status         String    @default("PENDING")
+  createdAt      DateTime  @default(now())
+  opportunityId  Int
+  opportunity    Opportunity       @relation(fields: [opportunityId], references: [id])
+  messages       ApplicationMessage[]
+}
+
+model ApplicationMessage {
+  id            Int         @id @default(autoincrement())
+  applicationId Int
+  application   Application @relation(fields: [applicationId], references: [id])
+  text          String
+  createdAt     DateTime    @default(now())
+}
